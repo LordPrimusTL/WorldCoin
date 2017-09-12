@@ -1,0 +1,132 @@
+if($user->class_id != 0)
+                    {
+                        if($i == 5 && user_class::find($user->class_id)->target < 3)
+                        {
+                            $this->MyEcho($i);
+                        }
+                        if($i == 4 && user_class::find($user->class_id)->target < 6)
+                        {
+                            $this->MyEcho($i);
+                        }
+
+                        if($i == 3 && user_class::find($user->class_id)->target < 9)
+                        {
+                            $this->MyEcho($i);
+                        }
+
+                        if($i == 2 && user_class::find($user->class_id)->target < 12)
+                        {
+                            $this->MyEcho($i);
+                        }
+                        if($i == 1 && user_class::find($user->class_id)->target < 15)
+                        {
+                            $this->MyEcho($i);
+                        }
+                    }
+                    else{
+
+                        //$this->MyEcho($user->referrer_mark);
+                        try{
+                            $user->referrer_mark++;
+                            $user->save();
+                            Log::info('referral mark added',(array)$user);
+                        }
+                        catch (\Exception $ex)
+                        {
+                            Log::error('referral mark not added',(array)$user);
+                        }
+
+                    }
+
+
+
+
+                                                Log::error('Referral Account Could Not be Updated',['error_id'=>$error_id,'error'=> $ex->getMessage().$ex->getLine().$ex->getTraceAsString(), 'data' => (array)$rft]);
+
+
+
+foreach ($trades as $trade)
+            {
+                $old_trade = $trade;
+                $sd = Carbon::parse($trade->start_date);
+                $diff = $sd->diffInMonths(Carbon::now());
+                if($diff > $trade->month_used)
+                {
+                    $trade->month_used = $diff;
+                    try{
+                        if($trade->month_used == 1 || $trade->month_used == 2)
+                        {
+                            $trade->profit_acc = $trade->profit_acc + $trade->amount/2;
+                            $trade->total_inv = $trade->amount + $trade->profit_acc;
+                            $trade->save();
+                            $this->UpdateTransMain($trade);
+                        }
+
+                        if($trade->month_used == 3)
+                        {
+                            $trade->profit_acc = $trade->profit_acc + $trade->amount/2;
+                            $trade->total_inv = $trade->amount + $trade->profit_acc;
+                            $trade->active = false;
+                            $trade->save();
+                            $this->UpdateTransMain($trade);
+                        }
+                        Log::info('Trade Sync: Trade Updated Successfully',['old_trade' => $old_trade,'trade' => (array)$trade, 'user'=>Auth::id()]);
+                    }
+                    catch(\Exception $ex)
+                    {
+                        $this->getLogger()->LogError('Trade Sync: Error occured while saving trade', $ex, ['old_trade' => $old_trade,'trade' => (array)$trade, 'user'=>Auth::id()]);
+                    }
+                }
+                else{
+
+                }
+                //$this->MyEcho(Carbon::parse($trade->start_date));
+                //$this->MyEcho(Carbon::parse($trade->start_date)->diffInMonths(Carbon::now()));
+            }
+            Session::flash('success','Trade Sync Completed Sucessfully');
+            return;
+
+              <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+
+                        <!-- Rounded switch -->
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+
+                        <input data-toggle="toggle" data-on="Enabled" data-off="Disabled" type="checkbox" id="with_stat">
+                        <div id="console-event"></div>
+                        <script>
+                            $(function() {
+                                $('#toggle-two').bootstrapToggle({
+                                    on: 'Enabled',
+                                    off: 'Disabled'
+                                });
+                            });
+                            $(function() {
+                                $('#with_stat').change(function() {
+                                    $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+                                })
+                            })
+                        </script>
+
+
+
+
+                                                <!--Start of Tawk.to Script-->
+                                                <script type="text/javascript">
+                                                    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                                                    (function(){
+                                                        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                                                        s1.async=true;
+                                                        s1.src='https://embed.tawk.to/599aa965dbb01a218b4dd703/default';
+                                                        s1.charset='UTF-8';
+                                                        s1.setAttribute('crossorigin','*');
+                                                        s0.parentNode.insertBefore(s1,s0);
+                                                    })();
+                                                </script>
+
+                                                <!--End of Tawk.to Script-->

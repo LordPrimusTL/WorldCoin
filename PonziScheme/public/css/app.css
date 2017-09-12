@@ -1,0 +1,45 @@
+#menu-left ul li a:hover{
+    background:skyblue !important;
+}
+#menu-left {
+    background-color: skyblue !important;
+}
+
+.active{
+    border: 2px solid #fff;
+}
+.p-signup-btn {
+    background-color: skyblue;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.wPositive{
+    background-color: green;!important;
+}
+
+.wNegative{
+    background-color: red;!important;
+}
+
+.learn_more
+{
+    color: #fff;
+    size: 200px;
+}
+
+.nn_link{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 1em 1.2em;
+    display: block;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
